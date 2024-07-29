@@ -5,6 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Alvis Gordon</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            margin-top: 20px;
+        }
+        .sidebar {
+            width: 25%;
+            margin-right: 20px;
+        }
+        .sidebar img {
+            width: 100%;
+            height: auto;
+        }
+        .content {
+            width: 75%;
+        }
+        .article {
+            margin-bottom: 20px;
+        }
+        .article img {
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        footer {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,10 +82,26 @@
         </nav>
     </header>
     <main>
-        <section>
-            <h2>About Me</h2>
-            <p>fhdhjsjijdsi</p>
-        </section>
+        <div class="sidebar">
+            <img src="your-photo.jpg" alt="Your Photo">
+        </div>
+        <div class="content">
+            <section>
+                <h2>About Me</h2>
+                <article class="article">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                    <img src="article-photo1.jpg" alt="Article Photo 1">
+                </article>
+                <article class="article">
+                    <p>Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+                    <img src="article-photo2.jpg" alt="Article Photo 2">
+                </article>
+                <article class="article">
+                    <p>Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+                    <img src="article-photo3.jpg" alt="Article Photo 3">
+                </article>
+            </section>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Alvis Gordon. All rights reserved.</p>
