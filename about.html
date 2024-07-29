@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Alvis Gordon</title>
+    <title>About - Alvis Gordon</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
@@ -14,13 +14,16 @@
             margin: 0;
             padding: 0;
             background-color: #ffffff;
+            min-height: 100vh; /* Ensures the body covers the full height of the viewport */
         }
+
         header {
             width: 100%;
             background-color: #333;
             color: white;
             padding: 10px 0;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -28,14 +31,18 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+
         nav ul li {
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
         }
+
         main {
+            flex: 1; /* Allows main to grow and push the footer to the bottom */
             display: flex;
             flex-direction: row;
             width: 80%;
@@ -43,87 +50,108 @@
             flex-wrap: wrap;
             justify-content: space-between;
         }
+
         .sidebar {
             width: 25%;
             margin-right: 20px;
         }
+
         .sidebar img {
             width: 100%;
             height: auto;
         }
+
         .content {
             width: 70%;
         }
+
         .article {
             margin-bottom: 20px;
         }
+
         .article img {
             width: 100%;
             height: auto;
             margin-top: 10px;
         }
+
         footer {
-            width: 100%;
             background-color: #333;
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
-            bottom: 0;
+            width: 100%;
+            position: relative;
+            bottom: 0; /* Keeps the footer at the bottom of the page */
         }
+
         /* Media queries for responsiveness */
         @media (max-width: 1024px) {
             main {
                 width: 90%;
             }
+
             .sidebar {
                 width: 30%;
             }
+
             .content {
                 width: 65%;
             }
         }
+
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
             }
+
             nav ul li {
                 margin: 10px 0;
             }
+
             main {
                 flex-direction: column;
                 align-items: center;
             }
+
             .sidebar {
                 width: 100%;
                 margin-right: 0;
                 margin-bottom: 20px;
             }
+
             .content {
                 width: 100%;
             }
         }
+
         @media (max-width: 480px) {
             header {
                 text-align: center;
             }
+
             nav ul {
                 flex-direction: column;
             }
+
             nav ul li {
                 margin: 10px 0;
             }
+
             main {
                 padding: 0 10px;
             }
+
             .sidebar {
                 width: 100%;
                 margin-right: 0;
                 margin-bottom: 20px;
             }
+
             .content {
                 width: 100%;
             }
+
             footer {
                 padding: 10px 0;
             }
