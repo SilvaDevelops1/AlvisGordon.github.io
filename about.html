@@ -11,6 +11,9 @@
             flex-direction: column;
             align-items: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
         }
         header {
             width: 100%;
@@ -23,6 +26,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
         }
         nav ul li {
             margin: 0 15px;
@@ -36,6 +40,8 @@
             flex-direction: row;
             width: 80%;
             margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
         .sidebar {
             width: 25%;
@@ -46,7 +52,7 @@
             height: auto;
         }
         .content {
-            width: 75%;
+            width: 70%;
         }
         .article {
             margin-bottom: 20px;
@@ -64,6 +70,63 @@
             padding: 10px 0;
             position: absolute;
             bottom: 0;
+        }
+        /* Media queries for responsiveness */
+        @media (max-width: 1024px) {
+            main {
+                width: 90%;
+            }
+            .sidebar {
+                width: 30%;
+            }
+            .content {
+                width: 65%;
+            }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .content {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            main {
+                padding: 0 10px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .content {
+                width: 100%;
+            }
+            footer {
+                padding: 10px 0;
+            }
         }
     </style>
 </head>
@@ -83,7 +146,7 @@
     </header>
     <main>
         <div class="sidebar">
-            <img src="images/IMG_0176.JPG" height="400" width="200" alt="me and my son">
+            <img src="images/IMG_0176.JPG" alt="me and my son">
         </div>
         <div class="content">
             <section>
