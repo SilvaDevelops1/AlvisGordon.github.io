@@ -19,10 +19,12 @@ header h1 {
 nav ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 10px;
 }
 
@@ -33,6 +35,34 @@ nav ul li a {
 
 main {
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sidebar {
+    width: 25%;
+    margin-right: 20px;
+}
+
+.sidebar img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+    width: 70%;
+}
+
+.article {
+    margin-bottom: 20px;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
 }
 
 footer {
@@ -43,4 +73,45 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    .content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    main {
+        padding: 0 10px;
+    }
+    footer {
+        padding: 10px 0;
+    }
 }
