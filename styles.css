@@ -75,6 +75,11 @@ footer {
     width: 100%;
 }
 
+.animated-ad {
+    width: 100%;
+    max-width: 300px; /* Adjust size as needed */
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
     main {
