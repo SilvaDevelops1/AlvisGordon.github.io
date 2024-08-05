@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add your CSS styles here */
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+</head>
+<body>
+    <h1>Upload Your Resume</h1>
+    <input type="file" id="upload" accept=".docx"/>
+    <div id="output"></div>
+
+    <script>
+        document.getElementById('upload').addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                mammoth.convertToHtml({arrayBuffer: event.target.result})
+                    .then(displayResult)
+                    .catch(handleError);
+            };
+            reader.readAsArrayBuffer(this.files[0]);
+        });
+
+        function displayResult(result) {
+            document.getElementById('output').innerHTML = result.value;
+        }
+
+        function handleError(err) {
+            console.log(err);
+        }
+    </script>
+</body>
+</html>
