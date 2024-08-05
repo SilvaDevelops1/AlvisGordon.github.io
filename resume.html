@@ -10,11 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
 </head>
 <body>
-    <h1>Upload Your Resume</h1>
-    <label for="upload">Upload File:</label>
-    <input type="file" id="upload" accept=".docx"/>
-    <div id="output"></div>
-
     <script>
         document.getElementById('upload').addEventListener('change', function(event) {
             var file = this.files[0];
