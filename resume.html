@@ -1,40 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Resume</title>
+    <title>My Resume</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Add your CSS styles here */
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your custom CSS -->
 </head>
 <body>
-    <script>
-        document.getElementById('upload').addEventListener('change', function(event) {
-            var file = this.files[0];
-            var allowedFile = '/Users/alvisgordon/Documents/GitHub/website/resumes/resume.docx';
-
-            if (file.name === allowedFile) {
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    mammoth.convertToHtml({arrayBuffer: event.target.result})
-                        .then(displayResult)
-                        .catch(handleError);
-                };
-                reader.readAsArrayBuffer(file);
-            } else {
-                alert('You can only upload the file: ' + allowedFile);
-            }
-        });
-
-        function displayResult(result) {
-            document.getElementById('output').innerHTML = result.value;
-        }
-
-        function handleError(err) {
-            console.log(err);
-        }
-    </script>
+    <h1>My Resume</h1>
+    <div id="resume-content">
+        <!-- Paste the HTML content from resume.html here -->
+        <p>Example content from the resume:</p>
+        <h2>Alvis Gordon</h2>
+        <p>Experience, skills, etc...</p>
+        <!-- Continue with the rest of your resume HTML -->
+    </div>
 </body>
 </html>
