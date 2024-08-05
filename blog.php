@@ -18,20 +18,47 @@
     // Process form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
-        $newUsername = $_POST["newUsername"];
-        $newPassword = $_POST["newPassword"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
     
-        // Insert data into the database
-        $sql = "INSERT INTO users (username, password) VALUES ('$newUsername', '$newPassword')";
-        if ($db->exec($sql)) {
-            echo "Account created successfully";
+        // Check if the username and password match
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+        $result = $db->query($sql);
+    
+        if ($result->fetchArray()) {
+            echo "Login successful";
         } else {
-            echo "Error: " . $db->lastErrorMsg();
+            echo "Invalid username or password";
         }
     }
     
     // Close the database connection
     $db->close();
     ?>
+    
+    <h2>Login</h2>
+    <form method="POST" action="">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+    
+    <h2>Create Account</h2>
+    <form method="POST" action="">
+        <label for="newUsername">Username:</label>
+        <input type="text" id="newUsername" name="newUsername" required><br><br>
+        
+        <label for="newPassword">Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required><br><br>
+        
+        <label for="newEmail">Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required><br><br>
+        
+        <input type="submit" value="Create Account">
+    </form>
 </body>
 </html>
