@@ -27,7 +27,8 @@
             $result = $db->query($sql);
         
             if ($result->fetchArray()) {
-                echo "Login successful";
+                echo "Login successful. Welcome to the blog!";
+                // Display blog content or redirect to another page
             } else {
                 echo "Invalid username or password";
             }
@@ -40,7 +41,7 @@
             // Insert data into the database
             $sql = "INSERT INTO users (username, password, email) VALUES ('$newUsername', '$newPassword', '$newEmail')";
             if ($db->exec($sql)) {
-                echo "Account created successfully";
+                echo "Account created successfully. You can now log in.";
             } else {
                 echo "Error: " . $db->lastErrorMsg();
             }
