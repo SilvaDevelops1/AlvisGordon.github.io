@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 10000,
+            "driver": "SQLite",
+            "name": "login data",
+            "group": "website1",
+            "database": "${workspaceFolder:website}/logindata.db"
+        }
+    ]
+}
