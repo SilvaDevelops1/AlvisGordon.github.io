@@ -21,7 +21,7 @@
             // Retrieve form data
             $username = $_POST["username"];
             $password = $_POST["password"];
-        
+            $newEmail = $_POST["email"];
             // Check if the username and password match
             $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
             $result = $db->query($sql);

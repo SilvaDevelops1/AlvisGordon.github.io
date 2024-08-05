@@ -2,35 +2,36 @@
 // Get the login details from the form
 $username = $_POST['username'];
 $password = $_POST['password'];
+$email = $_POST['email'];
 
 // Connect to the database
 $servername = "localhost";
-$dbname = "your_database_name";
-$dbusername = "your_username";
-$dbpassword = "your_password";
+$dbname = "login datae";
+$dbusername = "Alvis";
+$dbpassword = "T.A0704$k";
 
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+try {
+    $conn = new PDO("sqlite:${workspaceFolder:website}/logindata.db");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Prepare the SQL statement
-$sql = "SELECT * FROM login_data WHERE username = :username AND password = :password";
-$stmt = $conn->prepare($sql);
+    // Create table if it doesn't exist
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL,
+        email TEXT NOT NULL
+    )";
+    $conn->exec($sql);
 
-// Bind the parameters
-$stmt->bindParam(':username', $username);
-$stmt->bindParam(':password', $password);
+    // Insert user data into the table
+    $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
 
-// Execute the statement
-$stmt->execute();
-
-// Check if a matching record is found
-if ($stmt->rowCount() > 0) {
-    // Login successful
-    echo "Login successful!";
-} else {
-    // Login failed
-    echo "Invalid username or password!";
+    echo "User data saved successfully";
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
-
-// Close the connection
-$conn = null;
 ?>
