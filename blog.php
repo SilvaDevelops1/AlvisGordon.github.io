@@ -6,9 +6,9 @@
     <title>My Blog</title>
 </head>
 <body>
-   <?php
+<?php
     // Connect to the SQLite database
-    $db = new SQLite3('logindata.db');
+    $db = new SQLite3('login data.db');
     
     // Check connection
     if (!$db) {
@@ -50,33 +50,4 @@
     
     // Close the database connection
     $db->close();
-    ?>
-    
-    <h2>Login</h2>
-    <form method="POST" action="">
-        <input type="hidden" name="form_type" value="login">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Login">
-    </form>
-    
-    <h2>Create Account</h2>
-    <form method="POST" action="">
-        <input type="hidden" name="form_type" value="create_account">
-        <label for="newUsername">Username:</label>
-        <input type="text" id="newUsername" name="newUsername" required><br><br>
-        
-        <label for="newPassword">Password:</label>
-        <input type="password" id="newPassword" name="newPassword" required><br><br>
-        
-        <label for="newEmail">Email:</label>
-        <input type="email" id="newEmail" name="newEmail" required><br><br>
-        
-        <input type="submit" value="Create Account">
-    </form>
-</body>
-</html>
+?>
