@@ -1,17 +1,15 @@
 <?php
-$username = $_POST['username'];
-$password = $_POST['password'];
-$email = $_POST['email'];
-
 $servername = "localhost";
-$dbname = "login data";
+$dbname = "logindata.db";
 $dbusername = "Alvis";
 $dbpassword = "T.A0704$k";
 
 try {
-    $conn = new PDO("sqlite:${workspaceFolder:website}/logindata.db");
+    // Connect to the SQLite database
+    $conn = new PDO("sqlite:logindata.db");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Create the users table if it doesn't exist
     $sql = "CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL,
@@ -20,13 +18,7 @@ try {
     )";
     $conn->exec($sql);
 
-    $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':password', $password);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-
-    echo "User data saved successfully";
+    echo "Database and table setup successfully.";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }

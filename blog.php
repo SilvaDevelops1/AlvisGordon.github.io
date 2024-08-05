@@ -8,23 +8,34 @@
 <body>
 <?php
     // Connect to the SQLite database
-    $db = new SQLite3('login data.db');
+    $db = new SQLite3('logindata.db');
     
     // Check connection
     if (!$db) {
         die("Connection failed: " . $db->lastErrorMsg());
     }
     
+    // Create the users table if it doesn't exist
+    $createTableQuery = "CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL,
+        email TEXT NOT NULL
+    )";
+    $db->exec($createTableQuery);
+
     // Process form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['form_type']) && $_POST['form_type'] == 'login') {
             // Retrieve form data
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $newEmail = $_POST["email"];
+        
             // Check if the username and password match
-            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-            $result = $db->query($sql);
+            $stmt = $db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+            $stmt->bindValue(':username', $username, SQLITE3_TEXT);
+            $stmt->bindValue(':password', $password, SQLITE3_TEXT);
+            $result = $stmt->execute();
         
             if ($result->fetchArray()) {
                 echo "Login successful. Welcome to the blog!";
@@ -39,8 +50,12 @@
             $newEmail = $_POST["newEmail"];
         
             // Insert data into the database
-            $sql = "INSERT INTO users (username, password, email) VALUES ('$newUsername', '$newPassword', '$newEmail')";
-            if ($db->exec($sql)) {
+            $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+            $stmt->bindValue(':username', $newUsername, SQLITE3_TEXT);
+            $stmt->bindValue(':password', $newPassword, SQLITE3_TEXT);
+            $stmt->bindValue(':email', $newEmail, SQLITE3_TEXT);
+
+            if ($stmt->execute()) {
                 echo "Account created successfully. You can now log in.";
             } else {
                 echo "Error: " . $db->lastErrorMsg();
@@ -51,3 +66,5 @@
     // Close the database connection
     $db->close();
 ?>
+</body>
+</html>
