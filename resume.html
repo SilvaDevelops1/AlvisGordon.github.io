@@ -11,18 +11,26 @@
 </head>
 <body>
     <h1>Upload Your Resume</h1>
+    <label for="upload">Upload File:</label>
     <input type="file" id="upload" accept=".docx"/>
     <div id="output"></div>
 
     <script>
         document.getElementById('upload').addEventListener('change', function(event) {
-            var reader = new FileReader();
-            reader.onload = function(event) {
-                mammoth.convertToHtml({arrayBuffer: event.target.result})
-                    .then(displayResult)
-                    .catch(handleError);
-            };
-            reader.readAsArrayBuffer(this.files[0]);
+            var file = this.files[0];
+            var allowedFile = '/Users/alvisgordon/Documents/GitHub/website/resumes/resume.docx';
+
+            if (file.name === allowedFile) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    mammoth.convertToHtml({arrayBuffer: event.target.result})
+                        .then(displayResult)
+                        .catch(handleError);
+                };
+                reader.readAsArrayBuffer(file);
+            } else {
+                alert('You can only upload the file: ' + allowedFile);
+            }
         });
 
         function displayResult(result) {
