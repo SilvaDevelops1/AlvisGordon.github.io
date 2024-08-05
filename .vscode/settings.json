@@ -7,5 +7,6 @@
             "group": "website1",
             "database": "${workspaceFolder:website}/logindata.db"
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }
