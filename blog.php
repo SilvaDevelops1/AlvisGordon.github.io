@@ -1,70 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-</head>
-<body>
 <?php
-    // Connect to the SQLite database
-    $db = new SQLite3('logindata.db');
-    
-    // Check connection
-    if (!$db) {
-        die("Connection failed: " . $db->lastErrorMsg());
-    }
-    
-    // Create the users table if it doesn't exist
-    $createTableQuery = "CREATE TABLE IF NOT EXISTS users (
+// Database connection
+try {
+    $conn = new PDO("sqlite:logindata.db");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Ensure the users table exists
+    $sql = "CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT NOT NULL,
         password TEXT NOT NULL,
         email TEXT NOT NULL
     )";
-    $db->exec($createTableQuery);
+    $conn->exec($sql);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit();
+}
 
-    // Process form submission
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST['form_type']) && $_POST['form_type'] == 'login') {
-            // Retrieve form data
-            $username = $_POST["username"];
-            $password = $_POST["password"];
+// Handling form submissions
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['form_type']) && $_POST['form_type'] == 'create_account') {
+        // Retrieve form data
+        $newUsername = $_POST["newUsername"];
+        $newPassword = $_POST["newPassword"];
+        $newEmail = $_POST["newEmail"];
         
-            // Check if the username and password match
-            $stmt = $db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-            $stmt->bindValue(':username', $username, SQLITE3_TEXT);
-            $stmt->bindValue(':password', $password, SQLITE3_TEXT);
-            $result = $stmt->execute();
-        
-            if ($result->fetchArray()) {
-                echo "Login successful. Welcome to the blog!";
-                // Display blog content or redirect to another page
-            } else {
-                echo "Invalid username or password";
-            }
-        } elseif (isset($_POST['form_type']) && $_POST['form_type'] == 'create_account') {
-            // Retrieve form data
-            $newUsername = $_POST["newUsername"];
-            $newPassword = $_POST["newPassword"];
-            $newEmail = $_POST["newEmail"];
-        
-            // Insert data into the database
-            $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
-            $stmt->bindValue(':username', $newUsername, SQLITE3_TEXT);
-            $stmt->bindValue(':password', $newPassword, SQLITE3_TEXT);
-            $stmt->bindValue(':email', $newEmail, SQLITE3_TEXT);
+        // Optionally, hash the password before storing it
+        // $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-            if ($stmt->execute()) {
-                echo "Account created successfully. You can now log in.";
-            } else {
-                echo "Error: " . $db->lastErrorMsg();
-            }
+        // Insert data into the database
+        try {
+            $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+            $stmt->bindParam(':username', $newUsername);
+            $stmt->bindParam(':password', $newPassword);
+            $stmt->bindParam(':email', $newEmail);
+            $stmt->execute();
+
+            echo "Account created successfully. You can now log in.<br>";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage() . "<br>";
+        }
+    } elseif (isset($_POST['form_type']) && $_POST['form_type'] == 'login') {
+        // Retrieve form data
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        
+        // Optionally, verify the password if it was hashed
+        // $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
+        // $stmt->bindParam(':username', $username);
+        // $stmt->execute();
+        // $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // if ($user && password_verify($password, $user['password'])) {
+        
+        // Check if the username and password match (not using hashing for simplicity)
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            echo "Login successful. Welcome to the blog!<br>";
+        } else {
+            echo "Invalid username or password.<br>";
         }
     }
-    
-    // Close the database connection
-    $db->close();
+}
+
+// Close the database connection
+$conn = null;
 ?>
-</body>
-</html>

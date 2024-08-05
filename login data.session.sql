@@ -1,9 +1,4 @@
 <?php
-$servername = "localhost";
-$dbname = "logindata.db";
-$dbusername = "Alvis";
-$dbpassword = "T.A0704$k";
-
 try {
     // Connect to the SQLite database
     $conn = new PDO("sqlite:logindata.db");
@@ -18,7 +13,7 @@ try {
     )";
     $conn->exec($sql);
 
-    echo "Database and table setup successfully.";
+    echo "Database and table setup successfully.<br>";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
