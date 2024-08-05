@@ -17,18 +17,33 @@
     
     // Process form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Retrieve form data
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-    
-        // Check if the username and password match
-        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-        $result = $db->query($sql);
-    
-        if ($result->fetchArray()) {
-            echo "Login successful";
-        } else {
-            echo "Invalid username or password";
+        if (isset($_POST['form_type']) && $_POST['form_type'] == 'login') {
+            // Retrieve form data
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+        
+            // Check if the username and password match
+            $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+            $result = $db->query($sql);
+        
+            if ($result->fetchArray()) {
+                echo "Login successful";
+            } else {
+                echo "Invalid username or password";
+            }
+        } elseif (isset($_POST['form_type']) && $_POST['form_type'] == 'create_account') {
+            // Retrieve form data
+            $newUsername = $_POST["newUsername"];
+            $newPassword = $_POST["newPassword"];
+            $newEmail = $_POST["newEmail"];
+        
+            // Insert data into the database
+            $sql = "INSERT INTO users (username, password, email) VALUES ('$newUsername', '$newPassword', '$newEmail')";
+            if ($db->exec($sql)) {
+                echo "Account created successfully";
+            } else {
+                echo "Error: " . $db->lastErrorMsg();
+            }
         }
     }
     
@@ -38,6 +53,7 @@
     
     <h2>Login</h2>
     <form method="POST" action="">
+        <input type="hidden" name="form_type" value="login">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
         
@@ -49,6 +65,7 @@
     
     <h2>Create Account</h2>
     <form method="POST" action="">
+        <input type="hidden" name="form_type" value="create_account">
         <label for="newUsername">Username:</label>
         <input type="text" id="newUsername" name="newUsername" required><br><br>
         
