@@ -1,22 +1,172 @@
 <!DOCTYPE html>
-<header>
-  <nav>
-    <ul>
-      <li><a href="home.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Alvis Gordon</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-<svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98">
-  <path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path>
-</svg>
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+            width: 100%;
+        }
 
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .animated-ad {
+            width: 100%;
+            max-width: 500px; /* Adjust size as needed */
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 1024px) {
+            main {
+                padding: 20px 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            main {
+                padding: 10px;
+            }
+            footer {
+                padding: 10px 0;
+            }
+        }
+
+        /* Additional styles for home page template */
+        .preview {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .preview img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .preview h3 {
+            margin: 0;
+        }
+
+        .preview p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Web Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Latest Projects</h2>
+            <div class="preview">
+                <img src="images/Screenshot 2024-08-09 at 9.09.31 pm.png" alt="resume page preveiw">
+                <div>
+                    <h3><a href="resume.html">resume</a></h3>
+                    <p>here is my resume on the site this will be updated over the years if you would like to veiw the whole resume click <a href="resume.html">here</a></p>
+                </div>
+                </div>
+            </div>
+            <div class="preview">
+                <img src="images/Screenshot 2024-08-09 at 9.09.05 pm.png" alt="about me page">
+                    <a href="about.html">
+                        <div>
+                            <h3>About me page</h3>
+                            <p>this page is all about me on a personal point of view this will be updated on big life events to veiw the whole page click <a href="about.html">here</a></p>
+                        </div>
+                    </a>
+                    </div>
+                </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2022 Your Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>
-        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
-        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
-    </span>
-  
-</body></html>
+
