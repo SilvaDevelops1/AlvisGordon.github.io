@@ -12,6 +12,9 @@
 
 img {
     object-fit: cover;
+    width: auto;
+    height: auto;
+
 }
 
 html{
