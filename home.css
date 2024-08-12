@@ -12,7 +12,8 @@
 
 img {
     width: auto;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
 }
 
 html{
