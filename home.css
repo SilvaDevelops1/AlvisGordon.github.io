@@ -24,7 +24,7 @@ body{
 
 header{
     margin-top: 20px;
-    position: fixed;
+    position: flex;
     top: 0;
     left: 0;
     width: 100%;
@@ -37,6 +37,20 @@ header{
     z-index: 100;
 }
 
+h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #b74b4b;
+    margin: auto;
+    text-align: center;
+}
+p{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 1rem 0;
+    text-align: center;
+}
 .logo{
     font-size: 3rem;
     color: #b74b4b;
