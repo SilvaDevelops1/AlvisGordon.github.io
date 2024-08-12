@@ -10,14 +10,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-img {
-    max-width: 735px;
-    max-height: 977px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
 html{
     font-size: 62.5%;
 }
