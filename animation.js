@@ -1,5 +1,5 @@
 const typedTextElement = document.getElementById("typed-text");
-const phrases = ["Web Developer", "ICT Student", "YouTuber & Streamer", "Script Writer", "Discord Bot Developer"];
+const phrases = ["Web Developer ", "ICT Student ", "YouTuber & Streamer ", "Script Writer ", "Discord Bot Developer "];
 let currentPhraseIndex = 0;
 let currentCharIndex = 0;
 let isDeleting = false;
