@@ -10,6 +10,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+img {
+    object-fit: cover;
+}
+
 html{
     font-size: 62.5%;
 }
