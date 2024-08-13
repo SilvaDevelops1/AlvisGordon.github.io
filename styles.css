@@ -1,6 +1,17 @@
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
     padding: 0;
     background-color: #ffffff;
 }
@@ -67,7 +78,8 @@ main {
 
 footer {
     background: #333;
-    color: #fff;
+ {
+    font-size:#fff;
     text-align: center;
     padding: 1em 0;
     position: fixed;
