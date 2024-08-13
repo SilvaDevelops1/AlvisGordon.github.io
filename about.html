@@ -28,7 +28,26 @@
             <section>
                 <h2>About Me</h2>
                 <article class="article">
-                    <p>Hey there! I’m Alvis Gordon, a 17-year-old tech enthusiast, gamer, and proud father. My journey has been anything but ordinary. I’ve been in foster care since I was a baby, which has shaped who I am today—resilient, independent, and always striving to make the best of every situation.</p>
+                    <p>Hey there! I’m Alvis Gordon, a <span id="age"></span>-year-old tech enthusiast, gamer, and proud father. My journey has been anything but ordinary. I’ve been in foster care since I was a baby, which has shaped who I am today—resilient, independent, and always striving to make the best of every situation.</p>
+
+                    <script>
+                        // Get the current date
+                        var currentDate = new Date();
+
+                        // Set the birthdate to March 20th of the current year
+                        var birthdate = new Date(currentDate.getFullYear(), 2, 20);
+
+                        // Calculate the age
+                        var age = currentDate.getFullYear() - birthdate.getFullYear();
+
+                        // Check if the current date is before March 20th
+                        if (currentDate.getMonth() < 2 || (currentDate.getMonth() === 2 && currentDate.getDate() < 20)) {
+                            age--;
+                        }
+
+                        // Update the age in the HTML
+                        document.getElementById("age").textContent = age;
+                    </script>
                     <img src="images/IMG_0778.JPG" alt="Article Photo 1"> 
                 </article>
                 <article class="article">
