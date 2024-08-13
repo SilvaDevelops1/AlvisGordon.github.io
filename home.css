@@ -184,26 +184,7 @@ span{
     box-shadow: 0  0 25px #b74b4b;
 }
 
-.btn{
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background-color: black;
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: #b74b4b;
-    letter-spacing: 0.3rem;
-    font-weight: 600;
-    border: 2px solid #b74b4b;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
 
-.btn:hover{
-    transform: scale3d(1.03);
-    background-color: #b74b4b;
-    color: black;
-    box-shadow: 0 0 25px #b74b4b;
-}
 .typing-text {
     font-size: 34px;
     font-weight: 600;
