@@ -86,8 +86,8 @@ padding-top: 100%;
 background-color: #262933;
 border-radius: 1rem;
 transition: 0.2s;
-user-select: none;
 -webkit-user-select: none;
+user-select: none;
 }
 
 .keys .key span {
@@ -112,3 +112,4 @@ color: #EB6666;
 .keys .key.action span {
 color: #00ffcc;
 }
+
